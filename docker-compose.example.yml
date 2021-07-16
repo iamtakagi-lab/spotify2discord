@@ -11,7 +11,7 @@ services:
       SPOTIFY_CLIENT_SECRET: xxx
       # カンマで区切ると複数追加できます
       DISCORD_WEBOOK_URLS: https://discord.com/api/webhooks/xxx/xxx
-      # 監視する間隔秒数　(25秒以下にするとレートリミットを超過する可能性があります)
+      # 監視する間隔秒数　(25秒以下にするとレートリミットを超過する可能性が高まります)
       WATCH_INTERVAL_SECONDS: 25
       MESSAGE_FORMAT: '%name% is playing %track_url% %scrapbox_link%'
     ports:
