@@ -40,14 +40,10 @@
     "@types/koa__cors": "^3.0.2",
     "@types/node": "^16.3.2",
     "@types/spotify-web-api-node": "^5.0.3",
-    "ts-loader": "^9.2.3",
-    "ts-node": "^10.1.0",
-    "ts-node-dev": "^1.1.8",
-    "typescript": "^4.3.5",
-    "eslint": "^7.27.0",
     "@typescript-eslint/eslint-plugin": "^4.26.0",
     "@typescript-eslint/parser": "^4.26.0",
     "autoprefixer": "10.2.3",
+    "eslint": "^7.27.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-config-react": "1.1.7",
     "eslint-formatter-friendly": "7.0.0",
@@ -55,6 +51,10 @@
     "eslint-plugin-react-hooks": "4.2.0",
     "jest": "^27.0.4",
     "parcel-bundler": "^1.12.5",
-    "prettier": "^2.3.0"
+    "prettier": "^2.3.0",
+    "ts-loader": "^9.2.3",
+    "ts-node": "^10.1.0",
+    "ts-node-dev": "^1.1.8",
+    "typescript": "^4.3.5"
   }
 }

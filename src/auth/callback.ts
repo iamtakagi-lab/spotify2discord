@@ -3,7 +3,7 @@ import { auth, store } from '..'
 import env from '../env'
 
 export const callback = async (ctx) => {
-  let { code } = ctx.query
+  let code  = ctx.query.code
   if (code) {
     code = code.toString()
     const clientId = env.SPOTIFY_CLIENT_ID
@@ -25,13 +25,10 @@ export const callback = async (ctx) => {
         const accessToken = data.access_token
         const refreshToken = data.refresh_token
         store.setCredential({ accessToken, refreshToken })
-        const message = `Logged-In as ${me.display_name || me.id}`
-        console.log(message)
-        ctx.body = message
-        ctx.status = 200
       })
       .catch((e: any) => {
         console.error('Error: ', e, e.stack)
       })
+      ctx.redirect('/auth/me')
   }
 }

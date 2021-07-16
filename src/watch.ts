@@ -50,24 +50,19 @@ export default async () => {
         ) {
           const currentItem = currentTrack.item
           if (currentItem) {
-            env.DISCORD_WEBOOK_URLS.split(',').forEach(async (url) => {
+            env.DISCORD_WEBOOK_URLS.split(',').map(async (url) => {
               const splitUrl = url.split('/')
               const webhook = new WebhookClient(splitUrl[5], splitUrl[6])
               const display_name = me.display_name
               const track_id = currentItem.uri.split(':')[2]
               const track_url = `https://open.spotify.com/track/${track_id}`
               const scrapbox_link = `[https://spotify2image.vercel.app/image/track/${track_id}#.png https://open.spotify.com/track/${track_id}]`
-              const message = env.MESSAGE_FORMAT.replace(
-                '%name%',
-                display_name || me.id
-              )
+              const message = env.MESSAGE_FORMAT.replace('%name%', display_name || me.id)
                 .replace('%track_url%', track_url)
                 .replace('%scrapbox_link%', scrapbox_link)
               webhook.send(message)
             })
-            if (store.track == null) {
-              store.setTrack(currentTrack)
-            }
+            store.setTrack(currentTrack)
           }
         }
       }

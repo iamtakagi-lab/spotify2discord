@@ -9,25 +9,31 @@ import env from './env'
 import router from './routes'
 import Store from './store'
 import task from './task'
-import authInitializer from './auth-initializer'
+import me from './getMe'
+import getMe from './getMe'
 
 export const auth = new SpotifyAuthClient()
 export const store = new Store()
 
-const koa = new Koa()
+const main = () => {
+  const koa = new Koa()
   .use(bodyParser())
   .use(requestId())
   .use(helmet())
   .use(cors())
-  .use(router.routes())
   .use(router.allowedMethods())
+  .use(router.routes())
 
-;(() => {
   koa.listen(env.PORT, () => {
     console.info(
       `API server listening on ${env.HOST}:${env.PORT}, in ${env.NODE_ENV}`
     )
-    authInitializer(store)
-    task()
+    getMe().then((me) => {
+      const message = `Logged-In as ${me.display_name || me.id}`
+      console.log(message)
+      task()
+    })
   })
-})()
+}
+
+main()
