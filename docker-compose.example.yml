@@ -9,9 +9,11 @@ services:
       SPOTIFY_REDIRECT_URI: http://localhost:3000/auth/callback
       SPOTIFY_CLIENT_ID: xxx
       SPOTIFY_CLIENT_SECRET: xxx
+      # カンマで区切ると複数追加できます
       DISCORD_WEBOOK_URLS: https://discord.com/api/webhooks/xxx/xxx
-      MESSAGE_FORMAT: '%name% is playing %track_url% %scrapbox_link%'
+      # 監視する間隔秒数
       WATCH_INTERVAL_SECONDS: 60
+      MESSAGE_FORMAT: '%name% is playing %track_url% %scrapbox_link%'
     ports:
       - 3000:3000
     volumes:
