@@ -9,7 +9,7 @@ nano docker-compose.example.yml
 docker-compose up -d --build
 ```
 
-## Login
+## Authentication
 http://YOUR_HOST:YOUR_PORT/auth/login
 
 URL | Summary
