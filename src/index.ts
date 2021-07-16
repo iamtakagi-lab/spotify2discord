@@ -9,7 +9,6 @@ import env from './env'
 import router from './routes'
 import Store from './store'
 import task from './task'
-import fs from 'fs'
 import authInitializer from './auth-initializer'
 
 export const auth = new SpotifyAuthClient()

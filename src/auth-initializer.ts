@@ -9,7 +9,10 @@ export default (store) => {
 
   const { accessToken, refreshToken } = storedCredential
 
-  if (accessToken == null || refreshToken == null) return
+  if (accessToken == null || 
+    refreshToken == null || 
+    accessToken.length <= 0 || 
+    refreshToken.length <= 0) return
 
   if (accessToken != null && refreshToken != null) {
     store.setCredential({ accessToken, refreshToken })

@@ -6,7 +6,9 @@ import { store } from '.'
 export default async () => {
   if (
     store.credential.accessToken == null ||
-    store.credential.refreshToken == null
+    store.credential.refreshToken == null ||
+    store.credential.accessToken.length <= 0 ||
+    store.credential.refreshToken.length <= 0
   )
     return
 
