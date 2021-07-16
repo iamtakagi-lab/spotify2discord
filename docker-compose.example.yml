@@ -4,7 +4,6 @@ services:
     container_name: spotify-playing-feed
     build: .
     environment:
-      NODE_ENV: production
       HOST: 0.0.0.0
       PORT: 3000
       SPOTIFY_REDIRECT_URI: http://localhost:3000/auth/callback
