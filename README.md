@@ -10,7 +10,7 @@ docker-compose up -d --build
 ```
 
 ## Login
-http://YOUR_HOST:PORT/auth/login
+http://YOUR_HOST:YOUR_PORT/auth/login
 
 http://localhost:3000/auth/login をブラウザで開くとログインできます \
 [data/credentials.json](data/credential.json) にトークンデータが保存されます \
