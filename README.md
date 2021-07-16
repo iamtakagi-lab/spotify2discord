@@ -12,9 +12,13 @@ docker-compose up -d --build
 ## Login
 http://YOUR_HOST:YOUR_PORT/auth/login
 
-http://localhost:3000/auth/login をブラウザで開くとログインできます \
-[data/credential.json](data/credential.json) にトークンデータが保存されます \
-http://localhost:3000/auth/logout を開くとログアウトします
+URL | Summary
+---- | ----
+http://localhost:3000/auth/login | ログインします
+http://localhost:3000/auth/me | ログイン状態を返答します
+http://localhost:3000/auth/logout | ログアウトします
+
+[data/credential.json](data/credential.json) にトークンデータが保存されます
 
 ## LICENSE
 iamtakagi/niconico-history-feed is provided under the MIT license.
