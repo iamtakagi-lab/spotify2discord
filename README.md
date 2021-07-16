@@ -21,4 +21,4 @@ http://localhost:3000/auth/logout | ログアウトします
 [data/credential.json](data/credential.json) にトークンデータが保存されます
 
 ## LICENSE
-iamtakagi/niconico-history-feed is provided under the MIT license.
+iamtakagi/spotify-playing-feed is provided under the MIT license.
