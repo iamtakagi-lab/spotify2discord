@@ -1,3 +1,4 @@
+import task, { taskInterval } from '../task'
 import SpotifyWebApi from 'spotify-web-api-node'
 import { auth, store } from '..'
 import env from '../env'
@@ -29,6 +30,9 @@ export const callback = async (ctx) => {
       .catch((e: any) => {
         console.error('Error: ', e, e.stack)
       })
+      if(taskInterval == null) {
+        task()
+      }
       ctx.redirect('/auth/me')
   }
 }
