@@ -1,6 +1,6 @@
 import { store } from '..'
 
-export const logout = async (ctx) => {
+export default async (ctx) => {
   store.resetCredential()
   ctx.status = 200
 }

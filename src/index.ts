@@ -4,14 +4,12 @@ import cors from '@koa/cors'
 import helmet from 'koa-helmet'
 import requestId from 'koa-requestid'
 
-import SpotifyAuthClient from './auth/auth-client'
 import env from './env'
 import router from './routes'
 import Store from './store'
 import task from './task'
-import getMe from './getMe'
+import { getMe } from './auth/me'
 
-export const auth = new SpotifyAuthClient()
 export const store = new Store()
 
 const main = () => {

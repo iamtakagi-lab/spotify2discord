@@ -1,7 +1,8 @@
 import { stringify } from 'querystring'
+import SpotifyWebApi from 'spotify-web-api-node'
 import env from '../env'
 
-export const login = async (ctx) => {
+export default async (ctx) => {
   const scope = 'user-read-currently-playing'
   ctx.redirect(
     'https://accounts.spotify.com/authorize?' +
