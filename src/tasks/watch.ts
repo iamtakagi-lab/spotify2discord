@@ -1,6 +1,6 @@
 import SpotifyWebApi from 'spotify-web-api-node'
 import env from '../env'
-import { WebhookClient } from 'discord.js'
+import { MessageEmbed, WebhookClient } from 'discord.js'
 import { store } from '..'
 
 export default async () => {
@@ -56,13 +56,26 @@ export default async () => {
               const display_name = me.display_name
               const track_id = currentItem.uri.split(':')[2]
               const track_url = `https://open.spotify.com/track/${track_id}`
-              const tweet_link = `https://twitter.com/intent/tweet?url=${track_url}&hashtags=NowPlaying`
-              const scrapbox_link = `[https://spotify2image.vercel.app/image/track/${track_id}#.png ${track_url}]`
-              const message = env.MESSAGE_FORMAT.replace('%name%', display_name || me.id)
-                .replace('%track_url%', track_url)
-                .replace('%scrapbox_link%', scrapbox_link)
-                .replace('%tweet_link%', tweet_link)
-              webhook.send(message)
+              const tweet_url = `https://twitter.com/intent/tweet?url=${track_url}&hashtags=NowPlaying`
+              const image_url = `https://spotify2image.vercel.app/image/track/${track_id}#.png`
+              const scrapbox_link = `[${image_url} ${track_url}]`
+
+              const embed = new MessageEmbed()
+              embed.setColor("#7CFC00")
+              embed.setTitle(`${display_name} is now playing`)
+              embed.setURL(track_url)
+
+              if(env.SHARE_ON_TWITTER) {
+                embed.addField("Share on Twitter", `[Tweet with #NowPlaying]${tweet_url}`, false)
+              }
+              if(env.SCRAPBOX_LINK) {
+                embed.addField("Scrapbox Link", scrapbox_link, false)
+              }
+              if(env.EMBED_IMAGE){
+                embed.setImage(image_url)
+              }
+              
+              webhook.send(embed)
             })
             store.setTrack(currentTrack)
           }

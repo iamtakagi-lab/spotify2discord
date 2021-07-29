@@ -13,7 +13,11 @@ services:
       DISCORD_WEBOOK_URLS: https://discord.com/api/webhooks/xxx/xxx
       # 監視する間隔秒数　(25秒以下にするとレートリミットを超過する可能性が高まります)
       WATCH_INTERVAL_SECONDS: 25
-      MESSAGE_FORMAT: '%name% is playing %track_url% %scrapbox_link%'
+
+      SHARE_ON_TWITTER: 'true'
+      SCRAPBOX_LINK: 'true'
+      EMBED_IMAGE: 'true'
+
     ports:
       - 3000:3000
     volumes:

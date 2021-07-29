@@ -14,9 +14,15 @@ export default {
   DISCORD_WEBOOK_URLS: process.env.DISCORD_WEBOOK_URLS
     ? process.env.DISCORD_WEBOOK_URLS
     : '',
-  MESSAGE_FORMAT: process.env.MESSAGE_FORMAT
-    ? process.env.MESSAGE_FORMAT
-    : '%name% is playing %track_url% %scrapbox_link%',
+  SHARE_ON_TWITTER: process.env.SHARE_ON_TWITTER
+  ? Boolean(process.env.SHARE_ON_TWITTER)
+  : true,
+  SCRAPBOX_LINK: process.env.SCRAPBOX_LINK
+  ? Boolean(process.env.SCRAPBOX_LINK)
+  : true,
+  EMBED_IMAGE: process.env.EMBED_IMAGE
+  ? Boolean(process.env.EMBED_IMAGE)
+  : true,
   WATCH_INTERVAL_SECONDS: process.env.WATCH_INTERVAL_SECONDS
     ? Number(process.env.WATCH_INTERVAL_SECONDS)
     : Number(25),
