@@ -7,7 +7,7 @@ import requestId from 'koa-requestid'
 import env from './env'
 import router from './routes'
 import Store from './store'
-import task from './task'
+import runTask from './tasks'
 import { getMe } from './auth/me'
 
 export const store = new Store()
@@ -26,9 +26,8 @@ const main = () => {
       `API server listening on ${env.HOST}:${env.PORT}, in ${env.NODE_ENV}`
     )
     getMe().then((me) => {
-      const message = `Logged-In as ${me.display_name || me.id}`
-      console.log(message)
-      task()
+      console.log(`Logged-In as ${me.display_name || me.id}`)
+      runTask()
     })
   })
 }

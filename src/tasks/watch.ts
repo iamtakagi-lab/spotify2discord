@@ -1,7 +1,7 @@
 import SpotifyWebApi from 'spotify-web-api-node'
-import env from './env'
+import env from '../env'
 import { WebhookClient } from 'discord.js'
-import { store } from '.'
+import { store } from '..'
 
 export default async () => {
   if (
@@ -56,10 +56,12 @@ export default async () => {
               const display_name = me.display_name
               const track_id = currentItem.uri.split(':')[2]
               const track_url = `https://open.spotify.com/track/${track_id}`
-              const scrapbox_link = `[https://spotify2image.vercel.app/image/track/${track_id}#.png https://open.spotify.com/track/${track_id}]`
+              const tweet_link = `https://twitter.com/intent/tweet?url=${track_url}&hashtags=NowPlaying`
+              const scrapbox_link = `[https://spotify2image.vercel.app/image/track/${track_id}#.png ${track_url}]`
               const message = env.MESSAGE_FORMAT.replace('%name%', display_name || me.id)
                 .replace('%track_url%', track_url)
                 .replace('%scrapbox_link%', scrapbox_link)
+                .replace('%tweet_link%', tweet_link)
               webhook.send(message)
             })
             store.setTrack(currentTrack)

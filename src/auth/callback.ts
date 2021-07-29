@@ -1,4 +1,4 @@
-import task, { taskInterval } from '../task'
+import runTask, { taskInterval } from '../tasks'
 import SpotifyWebApi from 'spotify-web-api-node'
 import { store } from '..'
 import env from '../env'
@@ -22,7 +22,7 @@ export default async (ctx) => {
         const refreshToken = data.refresh_token
         store.setCredential({ accessToken, refreshToken })
         if(taskInterval == null) {
-          task()
+          runTask()
         }
       })
       .catch((e: any) => {

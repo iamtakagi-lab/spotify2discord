@@ -1,4 +1,4 @@
-import env from './env'
+import env from '../env'
 import watch from './watch'
 
 export let taskInterval = null
