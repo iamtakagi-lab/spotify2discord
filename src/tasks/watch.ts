@@ -55,6 +55,7 @@ export default async () => {
               const webhook = new WebhookClient(splitUrl[5], splitUrl[6])
               const display_name = me.display_name
               const track_id = currentItem.uri.split(':')[2]
+              const track_name = currentItem.name
               const track_url = `https://open.spotify.com/track/${track_id}`
               const tweet_url = `https://twitter.com/intent/tweet?url=${track_url}&hashtags=NowPlaying`
               const image_url = `https://spotify2image.vercel.app/image/track/${track_id}#.png`
@@ -64,17 +65,18 @@ export default async () => {
               embed.setColor("#7CFC00")
               embed.setTitle(`${display_name} is now playing`)
               embed.setURL(track_url)
+              embed.addField("Playing Track", track_name, false)
 
               if(env.SHARE_ON_TWITTER) {
-                embed.addField("Share on Twitter", `[Tweet with #NowPlaying]${tweet_url}`, false)
+                embed.addField("Share on Twitter", `[Tweet with #NowPlaying](${tweet_url})`, false)
               }
               if(env.SCRAPBOX_LINK) {
                 embed.addField("Scrapbox Link", scrapbox_link, false)
               }
               if(env.EMBED_IMAGE){
-                embed.setImage(image_url)
+                embed.setThumbnail(image_url)
               }
-              
+
               webhook.send(embed)
             })
             store.setTrack(currentTrack)
