@@ -1,6 +1,8 @@
 # spotify-playing-feed
 
-Spotifyの再生情報をDiscordに送信します
+Spotify NowPlaying notifier on discord
+
+![スクリーンショット 2021-07-30 5 35 20](https://user-images.githubusercontent.com/46530214/127562329-e4b3e0b4-3b13-4599-8ec9-527adc4209e4.png)
 
 ## Installation
 
