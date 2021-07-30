@@ -17,7 +17,6 @@ services:
       SHARE_ON_TWITTER: 'true'
       SCRAPBOX_LINK: 'true'
       EMBED_IMAGE: 'true'
-
     ports:
       - 3000:3000
     volumes:
