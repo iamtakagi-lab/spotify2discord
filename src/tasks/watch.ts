@@ -74,7 +74,7 @@ export default async () => {
                 embed.addField("Scrapbox Link", scrapbox_link, false)
               }
               if(env.EMBED_IMAGE){
-                embed.setThumbnail(image_url)
+                embed.setImage(image_url)
               }
 
               webhook.send(embed)
