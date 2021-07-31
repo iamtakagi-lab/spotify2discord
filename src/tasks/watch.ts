@@ -51,7 +51,7 @@ export default async () => {
           const currentItem = currentTrack.item
           if (currentItem) {
             env.DISCORD_WEBOOK_URLS.split(',').map(async (url) => {
-              sendDiscord(url.split('/'), spotify, currentTrack, me)
+              await sendDiscord(url.split('/'), spotify, currentTrack, me)
             })
             store.setTrack(currentTrack)
           }
