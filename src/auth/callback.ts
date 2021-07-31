@@ -11,9 +11,10 @@ export default async (ctx) => {
     const spotify = new SpotifyWebApi({
       clientId: env.SPOTIFY_CLIENT_ID,
       clientSecret: env.SPOTIFY_CLIENT_SECRET,
-      redirectUri: env.SPOTIFY_REDIRECT_URI
+      redirectUri: env.SPOTIFY_REDIRECT_URI,
     })
-    spotify.authorizationCodeGrant(code)
+    spotify
+      .authorizationCodeGrant(code)
       .then(async (res) => {
         return res.body
       })
@@ -21,13 +22,13 @@ export default async (ctx) => {
         const accessToken = data.access_token
         const refreshToken = data.refresh_token
         store.setCredential({ accessToken, refreshToken })
-        if(taskInterval == null) {
+        if (taskInterval == null) {
           runTask()
         }
       })
       .catch((e: any) => {
         console.error('Error: ', e, e.stack)
       })
-      ctx.redirect('/auth/me')
-    }
+    ctx.redirect('/auth/me')
+  }
 }

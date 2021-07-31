@@ -14,12 +14,12 @@ export const store = new Store()
 
 const main = () => {
   const koa = new Koa()
-  .use(bodyParser())
-  .use(requestId())
-  .use(helmet())
-  .use(cors())
-  .use(router.allowedMethods())
-  .use(router.routes())
+    .use(bodyParser())
+    .use(requestId())
+    .use(helmet())
+    .use(cors())
+    .use(router.allowedMethods())
+    .use(router.routes())
 
   koa.listen(env.PORT, () => {
     console.info(
