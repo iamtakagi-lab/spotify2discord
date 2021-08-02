@@ -2,7 +2,6 @@ import runTask, { taskInterval } from '../tasks'
 import SpotifyWebApi from 'spotify-web-api-node'
 import { store } from '..'
 import env from '../env'
-import { resolve } from 'path/posix'
 
 export default async (ctx) => {
   let code = ctx.query.code
