@@ -1,15 +1,19 @@
 import env from './env'
-import { MessageEmbed, TextChannel, WebhookClient } from 'discord.js'
+import { MessageEmbed, WebhookClient } from 'discord.js'
 import SpotifyWebApi from 'spotify-web-api-node'
 
-const makeData = async (track, me, spotify) => {
+const makeData = async (track, me, spotify: SpotifyWebApi) => {
   const item = track.item
+  const details = (await spotify.getTrack(item.id)).body
+  const album = details.album
   const track_id = item.uri.split(':')[2]
   const image_url = `https://spotify2image.vercel.app/image/track/${track_id}#.png`
   const track_url = `https://open.spotify.com/track/${track_id}`
   const tweet_url = `https://twitter.com/intent/tweet?url=${track_url}&hashtags=NowPlaying`
   return {
-    artists: (await spotify.getTrack(item.id)).body.artists,
+    artists: details.artists,
+    album_type: album.album_type,
+    album_name: album.name,
     display_name: me.display_name,
     track_name: item.name,
     track_url: track_url,
@@ -22,6 +26,8 @@ const makeData = async (track, me, spotify) => {
 
 const makeEmbed = ({
   artists,
+  album_type,
+  album_name,
   display_name,
   track_name,
   track_url,
@@ -38,6 +44,11 @@ const makeEmbed = ({
   embed.addField(
     'Artist' + (artists.length > 1 ? 's' : ''),
     artists.map((artist) => artist.name).join(', '),
+    true
+  )
+  embed.addField(
+    album_type,
+    album_name,
     true
   )
   embed.setTimestamp(timestamp)
