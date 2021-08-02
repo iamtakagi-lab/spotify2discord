@@ -2,7 +2,8 @@
 
 Spotify NowPlaying notifier on discord
 
-![スクリーンショット 2021-07-31 23 09 21](https://user-images.githubusercontent.com/46530214/127742439-6a4f862b-3caf-4af6-b1e8-626cec8e13b8.png)
+![スクリーンショット 2021-08-02 12 46 15](https://user-images.githubusercontent.com/46530214/127801803-4509eb23-9132-4b2d-a0f7-1cd00c31adcf.png)
+
 
 ## Installation
 
