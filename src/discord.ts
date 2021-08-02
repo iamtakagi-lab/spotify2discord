@@ -12,13 +12,14 @@ const makeData = async (track, me, spotify: SpotifyWebApi) => {
   const tweet_url = `https://twitter.com/intent/tweet?url=${track_url}&hashtags=NowPlaying`
   return {
     artists: details.artists,
-    album_type: album.album_type,
+    album_type: album.album_type.charAt(0).toUpperCase() + album.album_type.slice(1),
     album_name: album.name,
+    album_release_date: album.release_date,
+    album_image_url: album.images[0].url,
     display_name: me.display_name,
     track_name: item.name,
     track_url: track_url,
     tweet_url: tweet_url,
-    image_url: image_url,
     scrapbox_link: `[${image_url} ${track_url}]`,
     timestamp: track.timestamp,
   }
@@ -28,11 +29,12 @@ const makeEmbed = ({
   artists,
   album_type,
   album_name,
+  album_release_date,
+  album_image_url,
   display_name,
   track_name,
   track_url,
   tweet_url,
-  image_url,
   scrapbox_link,
   timestamp,
 }) => {
@@ -51,6 +53,8 @@ const makeEmbed = ({
     album_name,
     true
   )
+  embed.addField('Release Date', album_release_date, true)
+  embed.addField
   embed.setTimestamp(timestamp)
   if (env.SHARE_ON_TWITTER) {
     embed.addField(
@@ -63,7 +67,7 @@ const makeEmbed = ({
     embed.addField('Scrapbox Link', scrapbox_link, false)
   }
   if (env.EMBED_IMAGE) {
-    embed.setImage(image_url)
+    embed.setImage(album_image_url)
   }
   return Promise.resolve(embed)
 }
