@@ -1,6 +1,7 @@
 import env from './env'
 import { MessageEmbed, WebhookClient } from 'discord.js'
 import SpotifyWebApi from 'spotify-web-api-node'
+import format from 'date-fns/format'
 
 const makeData = async (track, me, spotify: SpotifyWebApi) => {
   const item = track.item
@@ -12,8 +13,8 @@ const makeData = async (track, me, spotify: SpotifyWebApi) => {
   const tweet_url = `https://twitter.com/intent/tweet?url=${track_url}&hashtags=NowPlaying`
   return {
     artists: details.artists,
-    album_type:
-      album.album_type.charAt(0).toUpperCase() + album.album_type.slice(1),
+    duration_min: format(details.duration_ms, 'mm:ss'),
+    album_type: album.album_type.charAt(0).toUpperCase() + album.album_type.slice(1),
     album_name: album.name,
     album_release_date: album.release_date,
     album_image_url: album.images[0].url,
@@ -28,6 +29,7 @@ const makeData = async (track, me, spotify: SpotifyWebApi) => {
 
 const makeEmbed = ({
   artists,
+  duration_min,
   album_type,
   album_name,
   album_release_date,
@@ -50,6 +52,7 @@ const makeEmbed = ({
     false
   )
   embed.addField(album_type, album_name, false)
+  embed.addField("Duration", duration_min, false)
   embed.addField('Release Date', album_release_date, false)
   embed.setTimestamp(timestamp)
   if (env.SHARE_ON_TWITTER) {
