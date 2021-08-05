@@ -2,10 +2,18 @@ import runTask, { taskInterval } from '../tasks'
 import SpotifyWebApi from 'spotify-web-api-node'
 import { store } from '..'
 import env from '../env'
+import { Context } from 'koa'
 
-export default async (ctx) => {
+export default async (ctx: Context) => {
   let code = ctx.query.code
-  if (code) {
+  const state = ctx.query.state
+  const storedState = ctx.cookies ? ctx.cookies['state'] : null;
+  if (code && state) {
+    if (state === null || state !== storedState) {
+      ctx.redirect('/')
+      return
+    }
+    ctx.cookies.set('state', null)
     code = code.toString()
     const spotify = new SpotifyWebApi({
       clientId: env.SPOTIFY_CLIENT_ID,

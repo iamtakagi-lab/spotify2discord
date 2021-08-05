@@ -1,16 +1,17 @@
-import { stringify } from 'querystring'
+import { generateRandomString } from '@/utils'
+import { Context } from 'koa'
 import SpotifyWebApi from 'spotify-web-api-node'
 import env from '../env'
 
-export default async (ctx) => {
-  const scope = 'user-read-currently-playing'
-  ctx.redirect(
-    'https://accounts.spotify.com/authorize?' +
-      stringify({
-        response_type: 'code',
-        client_id: env.SPOTIFY_CLIENT_ID,
-        scope: scope,
-        redirect_uri: env.SPOTIFY_REDIRECT_URI,
-      })
-  )
+export default async (ctx: Context) => {
+  const spotify = new SpotifyWebApi({
+    clientId: env.SPOTIFY_CLIENT_ID,
+    clientSecret: env.SPOTIFY_CLIENT_SECRET,
+    redirectUri: env.SPOTIFY_REDIRECT_URI
+  })
+  const state = generateRandomString(16)
+  const scope = ['user-read-private', 'user-read-currently-playing']
+  spotify.createAuthorizeURL(scope, state)
+  ctx.cookies.set('state', state)
+  ctx.redirect(spotify.createAuthorizeURL(scope, generateRandomString(16)))
 }
