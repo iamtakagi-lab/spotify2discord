@@ -6,6 +6,7 @@ services:
     environment:
       HOST: 0.0.0.0
       PORT: 3000
+      BASE_URL: http://localhost:3000
       SPOTIFY_REDIRECT_URI: http://localhost:3000/auth/callback
       SPOTIFY_CLIENT_ID: xxx
       SPOTIFY_CLIENT_SECRET: xxx
