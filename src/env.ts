@@ -2,6 +2,9 @@ export default {
   NODE_ENV: process.env.NODE_ENV ? process.env.NODE_ENV : 'development',
   HOST: process.env.HOST ? process.env.HOST : '0.0.0.0',
   PORT: process.env.PORT ? process.env.PORT : '3000',
+  BASE_URL: process.env.BASE_URL
+    ? process.env.BASE_URL
+    : '',
   SPOTIFY_REDIRECT_URI: process.env.SPOTIFY_REDIRECT_URI
     ? process.env.SPOTIFY_REDIRECT_URI
     : '',
