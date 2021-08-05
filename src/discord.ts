@@ -12,6 +12,7 @@ const makeData = async (track, me, spotify: SpotifyWebApi) => {
   const track_url = `https://open.spotify.com/track/${track_id}`
   const tweet_url = `https://twitter.com/intent/tweet?url=${track_url}&hashtags=NowPlaying`
   return {
+    product: me.product,
     artists: details.artists,
     duration_min: format(details.duration_ms, 'mm:ss'),
     album_type: album.album_type.charAt(0).toUpperCase() + album.album_type.slice(1),
@@ -28,6 +29,7 @@ const makeData = async (track, me, spotify: SpotifyWebApi) => {
 }
 
 const makeEmbed = ({
+  product,
   artists,
   duration_min,
   album_type,
@@ -54,6 +56,7 @@ const makeEmbed = ({
   embed.addField(album_type, album_name, false)
   embed.addField("Duration", duration_min, false)
   embed.addField('Release Date', album_release_date, false)
+  embed.addField('Product', product, false)
   embed.setTimestamp(timestamp)
   if (env.SHARE_ON_TWITTER) {
     embed.addField(
