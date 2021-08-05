@@ -6,14 +6,7 @@ import { Context } from 'koa'
 
 export default async (ctx: Context) => {
   let code = ctx.query.code
-  const state = ctx.query.state
-  const storedState = ctx.cookies ? ctx.cookies['state'] : null;
-  if (code && state) {
-    if (state === null || state !== storedState) {
-      ctx.redirect('/')
-      return
-    }
-    ctx.cookies.set('state', null)
+  if (code) {
     code = code.toString()
     const spotify = new SpotifyWebApi({
       clientId: env.SPOTIFY_CLIENT_ID,
