@@ -2,8 +2,9 @@ import runTask, { taskInterval } from '../tasks'
 import SpotifyWebApi from 'spotify-web-api-node'
 import { store } from '..'
 import env from '../env'
+import { Context } from 'koa'
 
-export default async (ctx) => {
+export default async (ctx: Context) => {
   let code = ctx.query.code
   if (code) {
     code = code.toString()
