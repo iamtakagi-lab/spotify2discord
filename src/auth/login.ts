@@ -1,4 +1,4 @@
-import { generateRandomString } from '@/utils'
+import { generateRandomString } from '../utils'
 import { Context } from 'koa'
 import SpotifyWebApi from 'spotify-web-api-node'
 import env from '../env'
