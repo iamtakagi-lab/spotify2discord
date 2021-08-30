@@ -1,20 +1,23 @@
 # spotify-playing-feed
 
-Spotify NowPlaying notifier on discord
+Spotify playing notify to discord
 
-![スクリーンショット 2021-08-02 12 46 15](https://user-images.githubusercontent.com/46530214/127801803-4509eb23-9132-4b2d-a0f7-1cd00c31adcf.png)
+![スクリーンショット 2021-08-31 4 59 38](https://user-images.githubusercontent.com/46530214/131397917-d1d89bde-201c-479a-8ad6-8aa8a41098f1.png)
 
 
 ## Installation
 
 ```
+git clone git@github.com:iamtakagi/spotify-playing-feed.git
 nano docker-compose.example.yml
 docker-compose up -d --build
 ```
 
-## Authentication
+## Initial Login
 
-http://YOUR_HOST:YOUR_PORT/auth/login
+http://localhost:3000/auth/login
+
+## Authentication
 
 | URL                               | Summary                  |
 | --------------------------------- | ------------------------ |
