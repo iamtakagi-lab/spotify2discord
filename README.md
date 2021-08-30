@@ -1,9 +1,8 @@
-# spotify-playing-feed
+# spotify2discord
 
-Spotify playing notify to discord
+Spotify playing info to discord
 
 ![スクリーンショット 2021-08-31 4 59 38](https://user-images.githubusercontent.com/46530214/131397917-d1d89bde-201c-479a-8ad6-8aa8a41098f1.png)
-
 
 ## Installation
 
