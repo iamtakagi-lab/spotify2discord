@@ -7,7 +7,6 @@ Spotify playing info to discord
 ## Installation
 
 ```
-git clone git@github.com:iamtakagi/spotify-playing-feed.git
 nano docker-compose.example.yml
 docker-compose up -d --build
 ```
