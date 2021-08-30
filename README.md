@@ -28,4 +28,4 @@ http://localhost:3000/auth/login
 
 ## LICENSE
 
-iamtakagi/spotify-playing-feed is provided under the MIT license.
+iamtakagi/spotify2discord is provided under the MIT license.
