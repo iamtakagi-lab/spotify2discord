@@ -2,7 +2,7 @@
   "name": "spotify2discord",
   "author": "takagi",
   "license": "MIT",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "scripts": {
     "build": "parcel build --target node src/index.ts",
     "dev": "ts-node-dev --respawn src/index.ts",
